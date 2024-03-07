@@ -1,8 +1,8 @@
 const canvas = document.getElementById('pongGame');
 const ctx = canvas.getContext('2d');
 
-canvas.width =800;
-canvas.height = 600;
+canvas.width =700;
+canvas.height = 400;
 
 let ballX = canvas.width / 2;
 let ballY = canvas.height / 2;
@@ -12,8 +12,8 @@ const paddleHeight = 100;
 let paddle1Y = (canvas.height - paddleHeight) / 2;
 let paddle2Y = (canvas.height - paddleHeight) / 2;
 
-let ballSpeedX = 4;
-let ballSpeedY = 4;
+let ballSpeedX = 3.5;
+let ballSpeedY = 3.5;
 
 
 function showBall() {
@@ -42,18 +42,29 @@ function moveBall() {
 
 document.addEventListener('keydown', function(event) {
     if (event.key === "ArrowUp") {
-        paddle1Y -= 20;
+        paddle1Y -= 40;
         if (paddle1Y < 0) paddle1Y = 0;
     }
 
     if (event.key === "ArrowDown") {
-        paddle1Y += 20;
+        paddle1Y += 40;
         if (paddle1Y + paddleHeight > canvas.height) paddle1Y = canvas.height - paddleHeight;
+    }
+
+    if (event.key === "g") {
+        paddle2Y -= 40;
+        if (paddle1Y < 0) paddle1Y = 0;
+    }
+
+    if (event.key === "b") {
+        paddle2Y += 40;
+        if (paddle2Y + paddleHeight > canvas.height) paddle2Y = canvas.height - paddleHeight;
     }
 
 });
 
 function game() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     showBall();
     drawPaddles();
     moveBall();
