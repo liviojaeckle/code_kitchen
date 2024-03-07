@@ -4,21 +4,31 @@ const ctx = canvas.getContext('2d');
 canvas.width =800;
 canvas.height = 600;
 
-ctx.fillStyle = 'red';
-ctx.fillRect(200, 200, 200, 200);
-
-let ball = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
-    size: 25,
-};
+let ballX = canvas.width / 2;
+let ballY = canvas.height / 2;
+const ballRadius = 10;
+const paddleWidth = 10;
+const paddleHeight = 100;
+let paddle1Y = (canvas.height - paddleHeight) / 2;
+let paddle2Y = (canvas.height - paddleHeight) / 2;
 
 function showBall() {
     ctx.beginPath();
-    ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI * 2);
+    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
     ctx.fillStyle = 'black';
     ctx.fill();
     ctx.closePath();
 }
 
-showBall();
+function drawPaddles() {
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(0, paddle1Y, paddleWidth, paddleHeight);
+    ctx.fillRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight);
+}
+
+function game() {
+    showBall();
+    drawPaddles();
+}
+
+game();
