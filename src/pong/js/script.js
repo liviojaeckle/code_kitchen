@@ -12,8 +12,8 @@ const paddleHeight = 100;
 let paddle1Y = (canvas.height - paddleHeight) / 2;
 let paddle2Y = (canvas.height - paddleHeight) / 2;
 
-let ballSpeedX = 0.5;
-let ballSpeedY = 0.5;
+let ballSpeedX = 4;
+let ballSpeedY = 4;
 
 
 function showBall() {
@@ -34,11 +34,15 @@ function moveBall() {
     ballX += ballSpeedX;
     ballY += ballSpeedY;
 
+    if (ballY - ballRadius <= 0 || ballY + ballRadius >= canvas.height) {
+        ballSpeedY = -ballSpeedY;
+    }
+
 }
 
 document.addEventListener('keydown', function(event) {
     if (event.key === "ArrowUp") {
-        paddle1Y = 20;
+        paddle1Y -= 20;
         if (paddle1Y < 0) paddle1Y = 0;
     }
 
