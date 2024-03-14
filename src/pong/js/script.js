@@ -57,6 +57,12 @@ function moveBall() {
         ballSpeedX = -ballSpeedX;
     }
 
+    if (ballX - ballRadius <= 0 || ballX + ballRadius >= canvas.width) {
+        ballX = canvas.width / 2;
+        ballY = canvas.height / 2;
+        ballSpeedX = -ballSpeedX;
+    }
+
 }
 
 document.addEventListener('keydown', function(event) {
@@ -82,8 +88,19 @@ document.addEventListener('keydown', function(event) {
 
 });
 
+function drawFieldBorder() {
+    const borderWidth = 10; 
+    ctx.fillStyle = "beige";
+    ctx.fillRect(0, 0, canvas.width, borderWidth);
+    ctx.fillRect(0, 0, borderWidth, canvas.height);
+    ctx.fillRect(canvas.width - borderWidth, 0, borderWidth, canvas.height);
+    ctx.fillRect(0, canvas.height - borderWidth, canvas.width, borderWidth);
+}
+
+
 function game() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawFieldBorder();
     showBall();
     drawPaddles();
     moveBall();
