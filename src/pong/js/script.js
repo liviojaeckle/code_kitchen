@@ -30,6 +30,17 @@ function drawPaddles() {
     ctx.fillRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight);
 }
 
+function checkCollisionWithPaddle(paddleX, paddleY, paddleWidth, paddleHeight) {
+    if (ballY + ballRadius > paddleY && ballY - ballRadius < paddleY + paddleHeight) {
+        if (ballSpeedX > 0 && ballX + ballRadius > paddleX && ballX < paddleX + paddleWidth) {
+            return true;
+        } else if (ballSpeedX < 0 && ballX - ballRadius < paddleX + paddleWidth && ballX > paddleX) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function moveBall() {
     ballX += ballSpeedX;
     ballY += ballSpeedY;
@@ -38,8 +49,11 @@ function moveBall() {
         ballSpeedY = -ballSpeedY;
     }
 
-    if (ballX - ballRadius <= paddleWidth && ballY > paddle1Y && ballY < paddle1Y + paddleHeight ||
-        ballX + ballRadius >= canvas.width - paddleWidth && ballY > paddle2Y && ballY < paddle2Y + paddleHeight) {
+    if (checkCollisionWithPaddle(0, paddle1Y, paddleWidth, paddleHeight)) {
+        ballSpeedX = -ballSpeedX;
+    }
+    
+    if (checkCollisionWithPaddle(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight)) {
         ballSpeedX = -ballSpeedX;
     }
 
