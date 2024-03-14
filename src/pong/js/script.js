@@ -4,6 +4,9 @@ const ctx = canvas.getContext('2d');
 canvas.width =700;
 canvas.height = 400;
 
+let score1 = 0;
+let score2 = 0;
+
 let ballX = canvas.width / 2;
 let ballY = canvas.height / 2;
 const ballRadius = 8;
@@ -41,9 +44,22 @@ function checkCollisionWithPaddle(paddleX, paddleY, paddleWidth, paddleHeight) {
     return false;
 }
 
+function drawScore() {
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(score1, canvas.width / 4, 30);
+    ctx.fillText(score2, 3 * canvas.width / 4, 30);
+}
+
 function moveBall() {
     ballX += ballSpeedX;
     ballY += ballSpeedY;
+
+    if (ballX - ballRadius <= 0) {
+        score2++;
+    } else if (ballX + ballRadius >= canvas.width) {
+        score1++;
+    }
 
     if (ballY - ballRadius <= 0 || ballY + ballRadius >= canvas.height) {
         ballSpeedY = -ballSpeedY;
@@ -105,6 +121,7 @@ function game() {
     drawPaddles();
     moveBall();
     requestAnimationFrame(game);
+    drawScore();
 }
 
 game();
