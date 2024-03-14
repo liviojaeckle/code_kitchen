@@ -38,6 +38,11 @@ function moveBall() {
         ballSpeedY = -ballSpeedY;
     }
 
+    if (ballX - ballRadius <= paddleWidth && ballY > paddle1Y && ballY < paddle1Y + paddleHeight ||
+        ballX + ballRadius >= canvas.width - paddleWidth && ballY > paddle2Y && ballY < paddle2Y + paddleHeight) {
+        ballSpeedX = -ballSpeedX;
+    }
+
 }
 
 document.addEventListener('keydown', function(event) {
@@ -53,7 +58,7 @@ document.addEventListener('keydown', function(event) {
 
     if (event.key === "g") {
         paddle2Y -= 40;
-        if (paddle1Y < 0) paddle1Y = 0;
+        if (paddle2Y < 0) paddle2Y = 0;
     }
 
     if (event.key === "b") {
