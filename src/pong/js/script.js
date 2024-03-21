@@ -28,9 +28,20 @@ function showBall() {
 }
 
 function drawPaddles() {
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
+
     ctx.fillStyle = 'blue';
-    ctx.fillRect(0, paddle1Y, paddleWidth, paddleHeight);
-    ctx.fillRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight);
+    ctx.beginPath();
+    ctx.roundRect(0, paddle1Y, paddleWidth, paddleHeight, 10);
+    ctx.fill();
+
+    ctx.fillStyle = 'green';
+    ctx.beginPath();
+    ctx.roundRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight, 10);
+    ctx.fill();
+
+    ctx.shadowBlur = 0;
 }
 
 function checkCollisionWithPaddle(paddleX, paddleY, paddleWidth, paddleHeight) {
