@@ -17,8 +17,29 @@ function playArea() {
     }
 }
 
+let snake = [];
+snake[0] = {
+    x: 3 * field,
+    y: 2 * field
+};
+
+function showSnake() {
+    for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = (i === 0) ? "blue" : "red";
+        ctx.fillRect(snake[i].x, snake[i].y, field, field);
+        ctx.strokeStyle = "green";
+        ctx.strokeRect(snake[i].x, snake[i].y, field, field);
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    
+});
+
+
 function game() {
     playArea();
+    showSnake();
 }
 
 game();
