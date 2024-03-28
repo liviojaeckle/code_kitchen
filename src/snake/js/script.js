@@ -1,7 +1,6 @@
 const canvas = document.getElementById('playArea');
 const ctx = canvas.getContext('2d');
 const field = 30;
-
 function playArea() {
     ctx.fillStyle = 'grey';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -32,11 +31,21 @@ function showSnake() {
     }
 }
 
-document.addEventListener('keydown', function(event) {
-    
-});
+let d;
 
+document.addEventListener("keydown", direction);
 
+function direction(event) {
+    if (event.keyCode === 37 && d !== "RIGHT") {
+        d = "LEFT";
+    } else if (event.keyCode === 38 && d !== "DOWN") {
+        d = "UP";
+    } else if (event.keyCode === 39 && d !== "LEFT") {
+        d = "RIGHT";
+    } else if (event.keyCode === 40 && d !== "UP") {
+        d = "DOWN";
+    }
+}
 function game() {
     playArea();
     showSnake();
