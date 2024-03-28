@@ -46,9 +46,23 @@ function direction(event) {
         d = "DOWN";
     }
 }
+
+function moveSnake() {
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
+
+    if (d === "LEFT") snakeX -= field;
+    if (d === "UP") snakeY -= field;
+    if (d === "RIGHT") snakeX += field;
+    if (d === "DOWN") snakeY += field;
+
+    snake.unshift({x: snakeX, y: snakeY});
+    snake.pop();
+}
 function game() {
     playArea();
     showSnake();
+    moveSnake()
 }
 
 game();
