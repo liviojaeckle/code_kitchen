@@ -1,6 +1,7 @@
 const canvas = document.getElementById('playArea');
 const ctx = canvas.getContext('2d');
 const field = 30;
+
 function playArea() {
     ctx.fillStyle = 'grey';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -16,21 +17,7 @@ function playArea() {
     }
 }
 
-let snake = [];
-snake[0] = {
-    x: 3 * field,
-    y: 2 * field
-};
-
-function showSnake() {
-    for (let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = (i === 0) ? "blue" : "red";
-        ctx.fillRect(snake[i].x, snake[i].y, field, field);
-        ctx.strokeStyle = "green";
-        ctx.strokeRect(snake[i].x, snake[i].y, field, field);
-    }
-}
-
+let snake = [{ x: 3 * field, y: 2 * field }];
 let d;
 
 document.addEventListener("keydown", direction);
@@ -47,6 +34,15 @@ function direction(event) {
     }
 }
 
+function showSnake() {
+    for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = (i === 0) ? "blue" : "red";
+        ctx.fillRect(snake[i].x, snake[i].y, field, field);
+        ctx.strokeStyle = "green";
+        ctx.strokeRect(snake[i].x, snake[i].y, field, field);
+    }
+}
+
 function moveSnake() {
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -59,10 +55,11 @@ function moveSnake() {
     snake.unshift({x: snakeX, y: snakeY});
     snake.pop();
 }
+
 function game() {
     playArea();
     showSnake();
-    moveSnake()
+    moveSnake();
 }
 
-game();
+let gameInterval = setInterval(game, 100);
