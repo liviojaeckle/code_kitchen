@@ -2,6 +2,11 @@ const canvas = document.getElementById('playArea');
 const ctx = canvas.getContext('2d');
 const field = 30;
 
+let food = {
+    x: Math.floor(Math.random() * (canvas.width / field)) * field,
+    y: Math.floor(Math.random() * (canvas.height / field)) * field
+};
+
 function playArea() {
     ctx.fillStyle = 'grey';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -34,6 +39,11 @@ function direction(event) {
     }
 }
 
+function drawFood() {
+    ctx.fillStyle = "red";
+    ctx.fillRect(food.x, food.y, field, field);
+}
+
 function showSnake() {
     for (let i = 0; i < snake.length; i++) {
         ctx.fillStyle = (i === 0) ? "blue" : "red";
@@ -63,6 +73,7 @@ function moveSnake() {
 
 function game() {
     playArea();
+    drawFood();
     showSnake();
     moveSnake();
 }
