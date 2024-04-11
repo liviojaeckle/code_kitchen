@@ -7,6 +7,8 @@ let food = {
     y: Math.floor(Math.random() * (canvas.height / field)) * field
 };
 
+let score = 0;
+
 function playArea() {
     ctx.fillStyle = 'grey';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -20,6 +22,15 @@ function playArea() {
         ctx.strokeStyle = 'rgba(0, 3, 0, 1)';
         ctx.strokeRect(0, y, canvas.width, field);
     }
+}
+
+function checkCollision(head, snake) {
+    for (let i = 1; i < snake.length; i++) {
+        if (head.x === snake[i].x && head.y === snake[i].y) {
+            return true;
+        }
+    }
+    return false;
 }
 
 let snake = [{ x: 3 * field, y: 2 * field }];
@@ -53,6 +64,12 @@ function showSnake() {
     }
 }
 
+function drawScore() {
+    ctx.fillStyle = "black";
+    ctx.font = "20px Arial";
+    ctx.fillText("Score: " + score, 5, canvas.height - 10);
+}
+
 function moveSnake() {
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -62,20 +79,19 @@ function moveSnake() {
     if (d === "RIGHT") snakeX += field;
     if (d === "DOWN") snakeY += field;
 
-    if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height) {
+    let newHead = {x: snakeX, y: snakeY};
+    
+    if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || checkCollision(newHead, snake)) {
         clearInterval(gameInterval);
         alert("Game Over");
-        return;
+        return; 
     }
-
-    let newHead = {x: snakeX, y: snakeY};
 
     if (snakeX === food.x && snakeY === food.y) {
         food = {
             x: Math.floor(Math.random() * (canvas.width / field)) * field,
             y: Math.floor(Math.random() * (canvas.height / field)) * field
         };
-
     } else {
         snake.pop();
     }
@@ -88,6 +104,7 @@ function game() {
     drawFood();
     showSnake();
     moveSnake();
+    drawScore();
 }
 
 let gameInterval = setInterval(game, 100);
