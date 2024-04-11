@@ -61,14 +61,26 @@ function moveSnake() {
     if (d === "UP") snakeY -= field;
     if (d === "RIGHT") snakeX += field;
     if (d === "DOWN") snakeY += field;
-    
+
     if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height) {
         clearInterval(gameInterval);
         alert("Game Over");
+        return;
     }
 
-    snake.unshift({x: snakeX, y: snakeY});
-    snake.pop();
+    let newHead = {x: snakeX, y: snakeY};
+
+    if (snakeX === food.x && snakeY === food.y) {
+        food = {
+            x: Math.floor(Math.random() * (canvas.width / field)) * field,
+            y: Math.floor(Math.random() * (canvas.height / field)) * field
+        };
+
+    } else {
+        snake.pop();
+    }
+
+    snake.unshift(newHead);
 }
 
 function game() {
