@@ -51,6 +51,11 @@ function moveSnake() {
     if (d === "UP") snakeY -= field;
     if (d === "RIGHT") snakeX += field;
     if (d === "DOWN") snakeY += field;
+    
+    if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height) {
+        clearInterval(gameInterval);
+        alert("Game Over");
+    }
 
     snake.unshift({x: snakeX, y: snakeY});
     snake.pop();
