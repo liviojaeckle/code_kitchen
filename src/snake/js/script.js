@@ -9,6 +9,8 @@ let food = {
 
 let score = 0;
 let highScore = localStorage.getItem('highScore') || 0;
+let speed = 100;
+let eaten = 0;
 
 function playArea() {
     ctx.fillStyle = 'grey';
@@ -72,6 +74,12 @@ function drawScore() {
     ctx.fillText("Highscore: " + highScore, canvas.width - 140, canvas.height - 10);
 }
 
+function increaseSpeed() {
+    if (eaten % 5 === 0 && eaten !== 0) {
+        speed = Math.max(50, speed - 10);
+    }
+}
+
 function moveSnake() {
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -95,6 +103,8 @@ function moveSnake() {
             y: Math.floor(Math.random() * (canvas.height / field)) * field
         };
         score += 1;
+        eaten += 1;
+        increaseSpeed();
         
         if (score > highScore) {
             highScore = score;
@@ -116,4 +126,4 @@ function game() {
     drawScore();
 }
 
-let gameInterval = setInterval(game, 100);
+let gameInterval = setInterval(game, speed);
