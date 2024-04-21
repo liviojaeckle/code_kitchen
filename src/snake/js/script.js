@@ -77,6 +77,8 @@ function drawScore() {
 function increaseSpeed() {
     if (eaten % 5 === 0 && eaten !== 0) {
         speed = Math.max(50, speed - 10);
+        clearInterval(gameInterval);
+        gameInterval = setInterval(game, speed);
     }
 }
 
@@ -90,11 +92,11 @@ function moveSnake() {
     if (d === "DOWN") snakeY += field;
 
     let newHead = {x: snakeX, y: snakeY};
-    
+
     if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || checkCollision(newHead, snake)) {
         clearInterval(gameInterval);
         alert("Game Over");
-        return; 
+        return;
     }
 
     if (snakeX === food.x && snakeY === food.y) {
