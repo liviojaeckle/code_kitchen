@@ -27,6 +27,16 @@ function playArea() {
     }
 }
 
+let paused = false;
+function pause() {
+    paused = !paused;
+    if (paused) {
+        clearInterval(gameInterval);
+    } else {
+        gameInterval = setInterval(game, speed);
+    }
+}
+
 function checkCollision(head, snake) {
     for (let i = 1; i < snake.length; i++) {
         if (head.x === snake[i].x && head.y === snake[i].y) {
@@ -42,14 +52,18 @@ let d;
 document.addEventListener("keydown", direction);
 
 function direction(event) {
-    if (event.keyCode === 37 && d !== "RIGHT") {
-        d = "LEFT";
-    } else if (event.keyCode === 38 && d !== "DOWN") {
-        d = "UP";
-    } else if (event.keyCode === 39 && d !== "LEFT") {
-        d = "RIGHT";
-    } else if (event.keyCode === 40 && d !== "UP") {
-        d = "DOWN";
+    if (event.keyCode === 80) {
+        pause();
+    } else if (!paused) {
+        if (event.keyCode === 37 && d !== "RIGHT") {
+            d = "LEFT";
+        } else if (event.keyCode === 38 && d !== "DOWN") {
+            d = "UP";
+        } else if (event.keyCode === 39 && d !== "LEFT") {
+            d = "RIGHT";
+        } else if (event.keyCode === 40 && d !== "UP") {
+            d = "DOWN";
+        }
     }
 }
 
@@ -78,16 +92,6 @@ function increaseSpeed() {
     if (eaten % 5 === 0 && eaten !== 0) {
         speed = Math.max(50, speed - 10);
         clearInterval(gameInterval);
-        gameInterval = setInterval(game, speed);
-    }
-}
-
-let paused = false;
-function pause() {
-    paused = !paused;
-    if (paused) {
-        clearInterval(gameInterval);
-    } else {
         gameInterval = setInterval(game, speed);
     }
 }
@@ -143,11 +147,13 @@ function moveSnake() {
 }
 
 function game() {
-    playArea();
-    drawFood();
-    showSnake();
-    moveSnake();
-    drawScore();
+    if (!paused) {
+        playArea();
+        drawFood();
+        showSnake();
+        moveSnake();
+        drawScore();
+    }
 }
 
 let gameInterval = setInterval(game, speed);
