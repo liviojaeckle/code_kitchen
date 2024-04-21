@@ -82,6 +82,16 @@ function increaseSpeed() {
     }
 }
 
+let paused = false;
+function pause() {
+    paused = !paused;
+    if (paused) {
+        clearInterval(gameInterval);
+    } else {
+        gameInterval = setInterval(game, speed);
+    }
+}
+
 function moveSnake() {
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
