@@ -8,6 +8,7 @@ let food = {
 };
 
 let score = 0;
+let highScore = localStorage.getItem('highScore') || 0;
 
 function playArea() {
     ctx.fillStyle = 'grey';
@@ -68,6 +69,7 @@ function drawScore() {
     ctx.fillStyle = "black";
     ctx.font = "20px Arial";
     ctx.fillText("Score: " + score, 5, canvas.height - 10);
+    ctx.fillText("Highscore: " + highScore, canvas.width - 140, canvas.height - 10);
 }
 
 function moveSnake() {
@@ -92,6 +94,13 @@ function moveSnake() {
             x: Math.floor(Math.random() * (canvas.width / field)) * field,
             y: Math.floor(Math.random() * (canvas.height / field)) * field
         };
+        score += 1;
+        
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('highScore', highScore);
+        }
+        
     } else {
         snake.pop();
     }
