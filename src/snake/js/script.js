@@ -91,9 +91,21 @@ function moveSnake() {
     if (d === "RIGHT") snakeX += field;
     if (d === "DOWN") snakeY += field;
 
+    if (snakeX < 0) {
+        snakeX = canvas.width - field;
+    } else if (snakeX >= canvas.width) {
+        snakeX = 0;
+    }
+
+    if (snakeY < 0) {
+        snakeY = canvas.height - field;
+    } else if (snakeY >= canvas.height) {
+        snakeY = 0;
+    }
+
     let newHead = {x: snakeX, y: snakeY};
 
-    if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || checkCollision(newHead, snake)) {
+    if (checkCollision(newHead, snake)) {
         clearInterval(gameInterval);
         alert("Game Over");
         return;
