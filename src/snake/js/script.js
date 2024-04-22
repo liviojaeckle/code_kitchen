@@ -12,6 +12,16 @@ let highScore = localStorage.getItem('highScore') || 0;
 let speed = 100;
 let eaten = 0;
 
+function pauseScreen() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "white";
+    ctx.font = "40px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Paused", canvas.width / 2, canvas.height / 2);
+}
+
 function playArea() {
     ctx.fillStyle = 'grey';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -32,6 +42,7 @@ function pause() {
     paused = !paused;
     if (paused) {
         clearInterval(gameInterval);
+        pauseScreen();
     } else {
         gameInterval = setInterval(game, speed);
     }
