@@ -11,6 +11,14 @@ let score = 0;
 let highScore = localStorage.getItem('highScore') || 0;
 let speed = 100;
 let eaten = 0;
+let obstacles = [];
+
+function drawObstacles() {
+    ctx.fillStyle = "black";
+    obstacles.forEach(obstacle => {
+        ctx.fillRect(obstacle.x, obstacle.y, field, field);
+    });
+}
 
 function pauseScreen() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
@@ -161,6 +169,7 @@ function game() {
     if (!paused) {
         playArea();
         drawFood();
+        drawObstacles();
         showSnake();
         moveSnake();
         drawScore();
