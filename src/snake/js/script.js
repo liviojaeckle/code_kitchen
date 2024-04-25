@@ -65,7 +65,9 @@ document.addEventListener("keydown", direction);
 function direction(event) {
     if (event.keyCode === 80) {
         pause();
-    } else if (!paused) {
+    } else if (event.keyCode === 32) {
+        document.location.reload(); }
+        else if (!paused) {
         if (event.keyCode === 37 && d !== "RIGHT") {
             d = "LEFT";
         } else if (event.keyCode === 38 && d !== "DOWN") {
@@ -91,6 +93,7 @@ function gameOver() {
     ctx.textAlign = "center";
     ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
     ctx.font = "20px Arial";
+    ctx.fillText("Press Space to Restart", canvas.width / 2, canvas.height / 2 + 40);
 }
 
 function showSnake() {
