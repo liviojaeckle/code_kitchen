@@ -83,6 +83,16 @@ function drawFood() {
     ctx.fillRect(food.x, food.y, field, field);
 }
 
+function gameOver() {
+    ctx.fillStyle = "rgba(0,0,0,0.75)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.font = "40px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+    ctx.font = "20px Arial";
+}
+
 function showSnake() {
     for (let i = 0; i < snake.length; i++) {
         ctx.fillStyle = (i === 0) ? "blue" : "red";
@@ -131,8 +141,8 @@ function moveSnake() {
     let newHead = {x: snakeX, y: snakeY};
 
     if (checkCollision(newHead, snake)) {
-        clearInterval(gameInterval);
-        alert("Game Over");
+        clearInterval(gameInterval); 
+        gameOver();                 
         return;
     }
 
