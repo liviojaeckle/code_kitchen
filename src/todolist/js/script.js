@@ -33,3 +33,19 @@ function addTask() {
 function deleteTask(item) {
     item.remove();
 }
+
+function randomEyeMovement() {
+    const eyes = document.querySelectorAll('.eye');
+    eyes.forEach(eye => {
+        const pupil = eye.querySelector('.pupil');
+        const offset = 6;
+
+        const x = Math.random() * 2 * offset - offset; 
+        const y = Math.random() * 2 * offset - offset;
+
+        pupil.style.transform = `translate(${x}px, ${y}px)`;
+    });
+}
+
+setInterval(randomEyeMovement, 1000);
+
