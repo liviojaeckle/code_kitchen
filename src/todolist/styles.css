@@ -5,13 +5,45 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: #9e9191;
+}
+
+.todo-container {
+    width: 300px;
+    background: #d7cccc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #d0c5c5;
+    border-radius: 4px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
+    width: auto;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
+    background-color: darkseagreen;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -21,4 +53,14 @@ button:hover {
 .completed span {
     text-decoration: line-through;
     color: grey;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+li span {
+    margin-right: 10px;
 }

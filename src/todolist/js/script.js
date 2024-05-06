@@ -11,13 +11,17 @@ function addTask() {
         const listItem = document.createElement('li');
         const taskText = document.createElement('span');
         taskText.textContent = newTask;
-        taskText.onclick = function() { this.parentNode.classList.toggle('completed'); };
+
+        const doneButton = document.createElement('button');
+        doneButton.textContent = 'Done';
+        doneButton.onclick = function() { this.parentNode.classList.toggle('completed'); };
 
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Delete';
         removeButton.onclick = function() { deleteTask(listItem); };
 
         listItem.appendChild(taskText);
+        listItem.appendChild(doneButton);
         listItem.appendChild(removeButton);
         document.getElementById('todoList').appendChild(listItem);
         input.value = '';
