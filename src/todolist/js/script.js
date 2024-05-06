@@ -57,3 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const eyes = document.querySelectorAll('.eye');
+    eyes.forEach(eye => {
+        eye.addEventListener('click', function(event) {
+            event.stopPropagation();
+            this.classList.toggle('red');
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mouths = document.querySelectorAll('.mouth');
+    mouths.forEach(mouth => {
+        mouth.addEventListener('click', function(event) {
+            event.stopPropagation();
+            this.classList.toggle('green');
+        });
+    });
+});
