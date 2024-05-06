@@ -49,3 +49,11 @@ function randomEyeMovement() {
 
 setInterval(randomEyeMovement, 400);
 
+document.addEventListener('DOMContentLoaded', () => {
+    const faces = document.querySelectorAll('.face');
+    faces.forEach(face => {
+        face.addEventListener('click', function() {
+            this.classList.toggle('face-alternate-color');
+        });
+    });
+});
