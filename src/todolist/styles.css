@@ -64,3 +64,36 @@ li {
 li span {
     margin-right: 10px;
 }
+
+.face {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: #f5ce94;
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.eye {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+}
+
+.eye::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
