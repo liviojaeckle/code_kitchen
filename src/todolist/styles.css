@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, "Bangla Sangam MN", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightskyblue;
+}
