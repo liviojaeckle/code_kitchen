@@ -66,9 +66,6 @@ li span {
 }
 
 .face {
-    position: fixed;
-    right: 20px;
-    top: 20px;
     width: 100px;
     height: 100px;
     background-color: #f5ce94;
@@ -76,6 +73,17 @@ li span {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+}
+
+#face1 {
+    right: 20px;
+    top: 20px;
+}
+
+#face2 {
+    left: 20px;
+    top: 20px;
 }
 
 .eye {
@@ -118,4 +126,5 @@ li span {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: transform 0.6s ease;
 }

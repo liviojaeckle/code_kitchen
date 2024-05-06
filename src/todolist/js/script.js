@@ -47,5 +47,5 @@ function randomEyeMovement() {
     });
 }
 
-setInterval(randomEyeMovement, 1000);
+setInterval(randomEyeMovement, 400);
 
