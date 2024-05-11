@@ -2,14 +2,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
-    font-family: Arial, "Bangla Sangam MN", serif;
+    background-color: aliceblue;
 }
 
 canvas {
-    display: block;
-    border: 1px solid black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid black;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
 }

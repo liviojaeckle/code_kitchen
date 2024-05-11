@@ -1,6 +1,11 @@
+const field = 30;
+const widthFields = 20;
+const heightFields = 15;
+
 const canvas = document.getElementById('playArea');
 const ctx = canvas.getContext('2d');
-const field = 30;
+canvas.width = field * widthFields;
+canvas.height = field * heightFields;
 
 let food = {
     x: Math.floor(Math.random() * (canvas.width / field)) * field,
@@ -81,7 +86,7 @@ function direction(event) {
 }
 
 function drawFood() {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "crimson";
     ctx.fillRect(food.x, food.y, field, field);
 }
 
