@@ -1,5 +1,6 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -10,4 +11,30 @@ body {
 canvas {
     border: 3px solid black;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
+}
+
+@keyframes rainbow {
+    0% { color: red; }
+    15% { color: orange; }
+    30% { color: yellow; }
+    45% { color: green; }
+    60% { color: blue; }
+    75% { color: indigo; }
+    90% { color: violet; }
+    100% { color: red; }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 120px;
+    animation: rainbow 1s infinite, rotate 12s infinite linear;;
 }
