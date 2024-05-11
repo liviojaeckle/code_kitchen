@@ -23,16 +23,16 @@ function pauseScreen() {
 }
 
 function playArea() {
-    ctx.fillStyle = 'grey';
+    ctx.fillStyle = 'darkslategray';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+    
     for (let x = field; x < canvas.width; x += field) {
-        ctx.strokeStyle = 'rgba(0, 3, 0, 1)';
+        ctx.strokeStyle = 'lightgray';
         ctx.strokeRect(x, 0, field, canvas.height);
     }
 
     for (let y = field; y < canvas.height; y += field) {
-        ctx.strokeStyle = 'rgba(0, 3, 0, 1)';
+        ctx.strokeStyle = 'lightgray';
         ctx.strokeRect(0, y, canvas.width, field);
     }
 }
@@ -98,18 +98,18 @@ function gameOver() {
 
 function showSnake() {
     for (let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = (i === 0) ? "blue" : "red";
+        ctx.fillStyle = i === 0 ? "navy" : "green";
         ctx.fillRect(snake[i].x, snake[i].y, field, field);
-        ctx.strokeStyle = "green";
+        ctx.strokeStyle = "white";
         ctx.strokeRect(snake[i].x, snake[i].y, field, field);
     }
 }
 
 function drawScore() {
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white"; 
     ctx.font = "20px Arial";
-    ctx.fillText("Score: " + score, 5, canvas.height - 10);
-    ctx.fillText("Highscore: " + highScore, canvas.width - 140, canvas.height - 10);
+    ctx.fillText("Score: " + score, 10, 20);
+    ctx.fillText("Highscore: " + highScore, canvas.width - 150, 20);
 }
 
 function increaseSpeed() {

@@ -15,8 +15,8 @@ const paddleHeight = 100;
 let paddle1Y = (canvas.height - paddleHeight) / 2;
 let paddle2Y = (canvas.height - paddleHeight) / 2;
 
-let ballSpeedX = 3.5;
-let ballSpeedY = 3.5;
+let ballSpeedX = 8;
+let ballSpeedY = 8;
 
 
 function showBall() {
