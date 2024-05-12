@@ -175,6 +175,18 @@ function moveSnake() {
     snake.unshift(newHead);
 }
 
+document.getElementById('gameTitle').addEventListener('click', function() {
+    const title = this;
+    if (title.style.animationName === 'rotate, rainbow') {
+        title.style.animationName = '';
+    } else {
+        title.style.animationName = 'rotate, rainbow';
+        title.style.animationDuration = '2.5s, 1s';
+        title.style.animationIterationCount = 'infinite';
+        title.style.animationTimingFunction = 'linear, linear';
+    }
+});
+
 function game() {
     if (!paused) {
         playArea();
