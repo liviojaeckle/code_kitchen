@@ -4,6 +4,9 @@ const ctx = canvas.getContext('2d');
 canvas.width =700;
 canvas.height = 400;
 
+let playerName1 = prompt("Spieler 1:");
+let playerName2 = prompt("Spieler 2:");
+
 let score1 = 0;
 let score2 = 0;
 
@@ -60,8 +63,8 @@ function checkCollisionWithPaddle(paddleX, paddleY, paddleWidth, paddleHeight) {
 function drawScore() {
     ctx.font = "30px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText(score1, canvas.width / 4, 30);
-    ctx.fillText(score2, 3 * canvas.width / 4, 30);
+    ctx.fillText(playerName1 + ": " + score1, canvas.width / 4, 30);
+    ctx.fillText(playerName2 + ": " + score2, 3 * canvas.width / 4, 30);
 }
 
 function moveBall() {

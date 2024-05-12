@@ -12,6 +12,36 @@ canvas {
     border: 2px solid blue;
 }
 
-h1 {
-    margin-bottom: 50px;
+@keyframes random {
+    0% { color: #46f500; }
+    15% { color: #2f2a22; }
+    30% { color: yellow; }
+    45% { color: #00ceff; }
+    60% { color: #fd6d6d; }
+    75% { color: #b971d9; }
+    90% { color: #15e3aa; }
+    100% { color: #06b2f1; }
 }
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: random 1s infinite;
+}
+
+/*@keyframes rotate {*/
+/*    from {*/
+/*        transform: rotate(0deg);*/
+/*    }*/
+/*    to {*/
+/*        transform: rotate(360deg);*/
+/*    }*/
+/*}*/
+
+/*h1 {*/
+/*    margin-bottom: 50px;*/
+/*    font-size: 40px;*/
+/*    cursor: pointer;*/
+/*    animation-fill-mode: forwards;*/
+/*}*/
