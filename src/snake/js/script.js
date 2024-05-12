@@ -86,7 +86,7 @@ function direction(event) {
 }
 
 function drawFood() {
-    ctx.fillStyle = "crimson";
+    ctx.fillStyle = "red";
     ctx.fillRect(food.x, food.y, field, field);
 }
 
@@ -103,7 +103,7 @@ function gameOver() {
 
 function showSnake() {
     for (let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = i === 0 ? "navy" : "green";
+        ctx.fillStyle = i === 0 ? "grey" : "white";
         ctx.fillRect(snake[i].x, snake[i].y, field, field);
         ctx.strokeStyle = "white";
         ctx.strokeRect(snake[i].x, snake[i].y, field, field);
@@ -122,6 +122,17 @@ function increaseSpeed() {
         speed = Math.max(50, speed - 10);
         clearInterval(gameInterval);
         gameInterval = setInterval(game, speed);
+    }
+}
+
+const winningScore = 10; 
+
+function checkWin() {
+    if (score1 >= winningScore || score2 >= winningScore) {
+        
+        //function
+        
+        clearInterval(gameInterval);
     }
 }
 

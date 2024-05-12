@@ -4,8 +4,8 @@ const ctx = canvas.getContext('2d');
 canvas.width =700;
 canvas.height = 400;
 
-let playerName1 = prompt("Spieler 1:");
-let playerName2 = prompt("Spieler 2:");
+let playerName1 = prompt("Name des 1. Spielers: ");
+let playerName2 = prompt("Name des 2. Spielers: ");
 
 let score1 = 0;
 let score2 = 0;
@@ -20,8 +20,8 @@ const paddleHeight = 100;
 let paddle1Y = (canvas.height - paddleHeight) / 2;
 let paddle2Y = (canvas.height - paddleHeight) / 2;
 
-let ballSpeedX = 8;
-let ballSpeedY = 8;
+let ballSpeedX = 6;
+let ballSpeedY = 6;
 
 
 function showBall() {
