@@ -49,6 +49,26 @@ function drawPaddles() {
     ctx.shadowBlur = 0;
 }
 
+const winningScore = 5;
+
+function checkWin() {
+    if (score1 >= winningScore || score2 >= winningScore) {
+        showWinner();
+        clearInterval(gameInterval);
+    }
+}
+
+function showWinner() {
+    ctx.fillStyle = "rgba(0,0,0,0.8)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.font = "40px Arial";
+    ctx.textAlign = "center";
+    let winner = score1 >= winningScore ? playerName1 : playerName2;
+    ctx.fillText(winner + " gewinnt!", canvas.width / 2, canvas.height / 2);
+    ctx.font = "20px Arial";
+}
+
 function checkCollisionWithPaddle(paddleX, paddleY, paddleWidth, paddleHeight) {
     if (ballY + ballRadius > paddleY && ballY - ballRadius < paddleY + paddleHeight) {
         if (ballSpeedX > 0 && ballX + ballRadius > paddleX && ballX < paddleX + paddleWidth) {
@@ -63,6 +83,7 @@ function checkCollisionWithPaddle(paddleX, paddleY, paddleWidth, paddleHeight) {
 function drawScore() {
     ctx.font = "30px Arial";
     ctx.fillStyle = "black";
+    ctx.textAlign = "center";
     ctx.fillText(playerName1 + ": " + score1, canvas.width / 4, 30);
     ctx.fillText(playerName2 + ": " + score2, 3 * canvas.width / 4, 30);
 }
@@ -73,8 +94,14 @@ function moveBall() {
 
     if (ballX - ballRadius <= 0) {
         score2++;
+        if (score2 >= winningScore) {
+            checkWin();
+        }
     } else if (ballX + ballRadius >= canvas.width) {
         score1++;
+        if (score1 >= winningScore) {
+            checkWin();
+        }
     }
 
     if (ballY - ballRadius <= 0 || ballY + ballRadius >= canvas.height) {

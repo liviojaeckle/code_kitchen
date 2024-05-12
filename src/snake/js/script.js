@@ -125,17 +125,6 @@ function increaseSpeed() {
     }
 }
 
-const winningScore = 10; 
-
-function checkWin() {
-    if (score1 >= winningScore || score2 >= winningScore) {
-        
-        //function
-        
-        clearInterval(gameInterval);
-    }
-}
-
 function moveSnake() {
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
