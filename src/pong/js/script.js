@@ -7,6 +7,8 @@ canvas.height = 400;
 let score1 = 0;
 let score2 = 0;
 
+let paused = false;
+
 let ballX = canvas.width / 2;
 let ballY = canvas.height / 2;
 const ballRadius = 8;
@@ -111,9 +113,23 @@ document.addEventListener('keydown', function(event) {
     if (event.key === "b") {
         paddle2Y += 40;
         if (paddle2Y + paddleHeight > canvas.height) paddle2Y = canvas.height - paddleHeight;
-    }
+    } else if (event.key === "p" || event.key === "P") {
+    paused = !paused; 
+    pauseScreen();
+}
 
 });
+
+function pauseScreen() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "white";
+    ctx.font = "40px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Paused", canvas.width / 2, canvas.height / 2);
+}
+
 
 function drawFieldBorder() {
     const borderWidth = 10; 
@@ -126,13 +142,15 @@ function drawFieldBorder() {
 
 
 function game() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawFieldBorder();
-    showBall();
-    drawPaddles();
-    moveBall();
+    if (!paused) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawFieldBorder();
+        showBall();
+        drawPaddles();
+        moveBall();
+        drawScore();
+    }
     requestAnimationFrame(game);
-    drawScore();
 }
-
 game();
+

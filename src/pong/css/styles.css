@@ -5,8 +5,13 @@ body, html {
     justify-content: center;
     align-items: center;
     background-color: beige;
+    flex-direction: column;
 }
 
 canvas {
     border: 2px solid blue;
+}
+
+h1 {
+    margin-bottom: 50px;
 }
