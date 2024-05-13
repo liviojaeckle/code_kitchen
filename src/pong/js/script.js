@@ -1,7 +1,7 @@
 const canvas = document.getElementById('pongGame');
 const ctx = canvas.getContext('2d');
 
-canvas.width =700;
+canvas.width = 700;
 canvas.height = 400;
 
 let playerName1 = prompt("Name des 1. Spielers: ");
@@ -23,13 +23,17 @@ let paddle2Y = (canvas.height - paddleHeight) / 2;
 let ballSpeedX = 6;
 let ballSpeedY = 6;
 
+let colorIndex = 0;
+const colors = ['blue', 'orange', 'green', 'yellow', 'magenta', 'pink', 'red'];
 
 function showBall() {
     ctx.beginPath();
-    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = 'black';
+    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = colors[colorIndex];
     ctx.fill();
     ctx.closePath();
+    
+    colorIndex = (colorIndex + 1) % colors.length;
 }
 
 function drawPaddles() {
@@ -41,7 +45,7 @@ function drawPaddles() {
     ctx.roundRect(0, paddle1Y, paddleWidth, paddleHeight, 10);
     ctx.fill();
 
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = 'red';
     ctx.beginPath();
     ctx.roundRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight, 10);
     ctx.fill();
@@ -65,8 +69,9 @@ function showWinner() {
     ctx.font = "40px Arial";
     ctx.textAlign = "center";
     let winner = score1 >= winningScore ? playerName1 : playerName2;
-    ctx.fillText(winner + " gewinnt!", canvas.width / 2, canvas.height / 2);
+    ctx.fillText(winner + " won!", canvas.width / 2, canvas.height / 2);
     ctx.font = "20px Arial";
+    ctx.fillText("Press Space to Restart", canvas.width / 2, canvas.height / 2 + 40);
 }
 
 function checkCollisionWithPaddle(paddleX, paddleY, paddleWidth, paddleHeight) {
@@ -111,7 +116,7 @@ function moveBall() {
     if (checkCollisionWithPaddle(0, paddle1Y, paddleWidth, paddleHeight)) {
         ballSpeedX = -ballSpeedX;
     }
-    
+
     if (checkCollisionWithPaddle(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight)) {
         ballSpeedX = -ballSpeedX;
     }
@@ -124,7 +129,7 @@ function moveBall() {
 
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.key === "ArrowUp") {
         paddle1Y -= 40;
         if (paddle1Y < 0) paddle1Y = 0;
@@ -144,10 +149,9 @@ document.addEventListener('keydown', function(event) {
         paddle2Y += 40;
         if (paddle2Y + paddleHeight > canvas.height) paddle2Y = canvas.height - paddleHeight;
     } else if (event.key === "p" || event.key === "P") {
-    paused = !paused; 
-    pauseScreen();
-}
-
+        paused = !paused;
+        pauseScreen();
+    }
 });
 
 function pauseScreen() {
@@ -162,7 +166,7 @@ function pauseScreen() {
 
 
 function drawFieldBorder() {
-    const borderWidth = 10; 
+    const borderWidth = 10;
     ctx.fillStyle = "beige";
     ctx.fillRect(0, 0, canvas.width, borderWidth);
     ctx.fillRect(0, 0, borderWidth, canvas.height);
@@ -182,5 +186,6 @@ function game() {
     }
     requestAnimationFrame(game);
 }
+
 game();
 
