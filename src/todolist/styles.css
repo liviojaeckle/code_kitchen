@@ -88,6 +88,16 @@ li span {
     top: 20px;
 }
 
+#face3 {
+    left: 20px;
+    bottom: 20px;
+}
+
+#face4 {
+    right: 20px;
+    bottom: 20px;
+}
+
 .eye {
     margin-top: -20px;
     width: 25px;
@@ -164,10 +174,8 @@ li span {
 .clock {
     font-size: 24px;
     font-weight: bold;
-}
+    transition: color 0.5s ease-in-out;
 
-.clock:hover {
-    color: red;
 }
 
 .delete-button {
@@ -186,4 +194,14 @@ li span {
 
 .done-button:hover {
     background-color: #8ad7f6;
+}
+
+@keyframes color {
+    0% { color: black; }
+    50% { color: white; }
+
+}
+
+.color-text {
+    animation: color 0.1s infinite;
 }

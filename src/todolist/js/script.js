@@ -101,4 +101,8 @@ function updateClock() {
 }
 
 setInterval(updateClock, 1000);
-document.addEventListener('DOMContentLoaded', updateClock); 
+document.addEventListener('DOMContentLoaded', updateClock);
+
+document.getElementById('clock').addEventListener('click', function() {
+    this.classList.toggle('color-text');
+});
