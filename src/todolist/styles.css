@@ -157,7 +157,7 @@ li span {
 
 .time-display {
     margin-bottom: 750px;
-    text-align: center; /* Zentriert den Text innerhalb des Containers */
+    text-align: center;
     position: fixed;
 }
 
@@ -168,4 +168,22 @@ li span {
 
 .clock:hover {
     color: red;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.done-button {
+    background-color: deepskyblue;
+    color: white;
+}
+
+.done-button:hover {
+    background-color: #8ad7f6;
 }

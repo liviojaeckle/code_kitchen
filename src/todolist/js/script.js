@@ -15,10 +15,12 @@ function addTask() {
 
         const doneButton = document.createElement('button');
         doneButton.textContent = 'Done';
+        doneButton.className = 'done-button';
         doneButton.onclick = function() { this.parentNode.classList.toggle('completed'); };
 
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Delete';
+        removeButton.className = 'delete-button';
         removeButton.onclick = function() { deleteTask(listItem); };
 
         listItem.appendChild(taskText);
