@@ -44,6 +44,7 @@ button {
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: background-color 0.3s;
+    min-width: 80px
 }
 
 button:hover {
@@ -139,4 +140,16 @@ li span {
 
 .mouth.green {
     background-color: darkgreen;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.todo-item span {
+    flex-grow: 1;
+    margin-right: 10px;
 }

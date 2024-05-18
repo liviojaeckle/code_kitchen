@@ -9,6 +9,7 @@ function addTask() {
     const newTask = input.value.trim();
     if (newTask) {
         const listItem = document.createElement('li');
+        listItem.className = 'todo-item';
         const taskText = document.createElement('span');
         taskText.textContent = newTask;
 
