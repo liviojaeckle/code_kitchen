@@ -78,3 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours().toString();
+    let minutes = now.getMinutes().toString();
+    let seconds = now.getSeconds().toString();
+
+    if (hours.length < 2) {
+        hours = '0' + hours;
+    }
+    if (minutes.length < 2) {
+        minutes = '0' + minutes;
+    }
+    if (seconds.length < 2) {
+        seconds = '0' + seconds;
+    }
+
+    document.getElementById('clock').textContent = hours + ':' + minutes + ':' + seconds;
+}
+
+setInterval(updateClock, 1000);
+document.addEventListener('DOMContentLoaded', updateClock); 
